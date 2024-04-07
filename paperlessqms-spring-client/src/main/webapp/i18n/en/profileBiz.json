@@ -1,0 +1,39 @@
+{
+  "paperlessqmsApp": {
+    "profileBiz": {
+      "home": {
+        "title": "Profile Bizs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Profile Biz",
+        "createOrEditLabel": "Create or edit a Profile Biz",
+        "notFound": "No Profile Bizs found"
+      },
+      "created": "A new Profile Biz is created with identifier {{ param }}",
+      "updated": "A Profile Biz is updated with identifier {{ param }}",
+      "deleted": "A Profile Biz is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profile Biz {{ id }}?"
+      },
+      "detail": {
+        "title": "Profile Biz"
+      },
+      "id": "ID",
+      "bizName": "Biz Name",
+      "bizLogoBase64": "Biz Logo Base 64",
+      "bizPhotoBase64": "Biz Photo Base 64",
+      "bizAddress": "Biz Address",
+      "bizLevel": "Biz Level",
+      "bizEmail": "Biz Email",
+      "bizPhoneNumber": "Biz Phone Number",
+      "bizPhoneCode": "Biz Phone Code",
+      "bizPhoneIsoCode": "Biz Phone Iso Code",
+      "bizWebsite": "Biz Website",
+      "bizDesc": "Biz Desc",
+      "enable": "Enable",
+      "createdByUid": "Created By Uid",
+      "updatedByUid": "Updated By Uid",
+      "modifiedDate": "Modified Date",
+      "createdDate": "Created Date"
+    }
+  }
+}

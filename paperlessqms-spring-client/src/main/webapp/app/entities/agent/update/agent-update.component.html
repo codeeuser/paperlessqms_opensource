@@ -1,0 +1,175 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="qms-agent-heading" data-cy="AgentCreateUpdateHeading" qmsTranslate="paperlessqmsApp.agent.home.createOrEditLabel">
+        Create or edit a Agent
+      </h2>
+
+      <div>
+        <qms-alert-error></qms-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" qmsTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.profileBizId" for="field_profileBizId">Profile Biz Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="profileBizId"
+            id="field_profileBizId"
+            data-cy="profileBizId"
+            formControlName="profileBizId"
+          />
+          @if (editForm.get('profileBizId')!.invalid && (editForm.get('profileBizId')!.dirty || editForm.get('profileBizId')!.touched)) {
+            <div>
+              @if (editForm.get('profileBizId')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('profileBizId')?.errors?.number"
+                qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.uid" for="field_uid">Uid</label>
+          <input type="number" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          @if (editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)) {
+            <div>
+              @if (editForm.get('uid')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('uid')?.errors?.number" qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.login" for="field_login">Login</label>
+          <input type="text" class="form-control" name="login" id="field_login" data-cy="login" formControlName="login" />
+          @if (editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)) {
+            <div>
+              @if (editForm.get('login')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          @if (editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)) {
+            <div>
+              @if (editForm.get('email')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.updateUid" for="field_updateUid">Update Uid</label>
+          <input type="number" class="form-control" name="updateUid" id="field_updateUid" data-cy="updateUid" formControlName="updateUid" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.enable" for="field_enable">Enable</label>
+          <input type="checkbox" class="form-check" name="enable" id="field_enable" data-cy="enable" formControlName="enable" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.orderNum" for="field_orderNum">Order Num</label>
+          <input type="number" class="form-control" name="orderNum" id="field_orderNum" data-cy="orderNum" formControlName="orderNum" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.createdDate" for="field_createdDate">Created Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdDate"
+            id="field_createdDate"
+            data-cy="createdDate"
+            formControlName="createdDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.modifiedDate" for="field_modifiedDate">Modified Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedDate"
+            id="field_modifiedDate"
+            data-cy="modifiedDate"
+            formControlName="modifiedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.queueTerminal" for="field_queueTerminal">Queue Terminal</label>
+          <select
+            class="form-control"
+            id="field_queueTerminal"
+            data-cy="queueTerminal"
+            name="queueTerminal"
+            formControlName="queueTerminal"
+            [compareWith]="compareQueueTerminal"
+          >
+            <option [ngValue]="null"></option>
+            @for (queueTerminalOption of queueTerminalsSharedCollection; track $index) {
+              <option [ngValue]="queueTerminalOption">{{ queueTerminalOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.agent.queueDepartment" for="field_queueDepartment"
+            >Queue Department</label
+          >
+          <select
+            class="form-control"
+            id="field_queueDepartment"
+            data-cy="queueDepartment"
+            name="queueDepartment"
+            formControlName="queueDepartment"
+            [compareWith]="compareQueueDepartment"
+          >
+            <option [ngValue]="null"></option>
+            @for (queueDepartmentOption of queueDepartmentsSharedCollection; track $index) {
+              <option [ngValue]="queueDepartmentOption">{{ queueDepartmentOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span qmsTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

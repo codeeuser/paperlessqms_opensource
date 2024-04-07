@@ -1,0 +1,210 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="qms-profile-biz-heading"
+        data-cy="ProfileBizCreateUpdateHeading"
+        qmsTranslate="paperlessqmsApp.profileBiz.home.createOrEditLabel"
+      >
+        Create or edit a Profile Biz
+      </h2>
+
+      <div>
+        <qms-alert-error></qms-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" qmsTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizName" for="field_bizName">Biz Name</label>
+          <input type="text" class="form-control" name="bizName" id="field_bizName" data-cy="bizName" formControlName="bizName" />
+          @if (editForm.get('bizName')!.invalid && (editForm.get('bizName')!.dirty || editForm.get('bizName')!.touched)) {
+            <div>
+              @if (editForm.get('bizName')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizLogoBase64" for="field_bizLogoBase64"
+            >Biz Logo Base 64</label
+          >
+          <textarea
+            class="form-control"
+            name="bizLogoBase64"
+            id="field_bizLogoBase64"
+            data-cy="bizLogoBase64"
+            formControlName="bizLogoBase64"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizPhotoBase64" for="field_bizPhotoBase64"
+            >Biz Photo Base 64</label
+          >
+          <textarea
+            class="form-control"
+            name="bizPhotoBase64"
+            id="field_bizPhotoBase64"
+            data-cy="bizPhotoBase64"
+            formControlName="bizPhotoBase64"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizAddress" for="field_bizAddress">Biz Address</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bizAddress"
+            id="field_bizAddress"
+            data-cy="bizAddress"
+            formControlName="bizAddress"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizLevel" for="field_bizLevel">Biz Level</label>
+          <input type="number" class="form-control" name="bizLevel" id="field_bizLevel" data-cy="bizLevel" formControlName="bizLevel" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizEmail" for="field_bizEmail">Biz Email</label>
+          <input type="text" class="form-control" name="bizEmail" id="field_bizEmail" data-cy="bizEmail" formControlName="bizEmail" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizPhoneNumber" for="field_bizPhoneNumber"
+            >Biz Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bizPhoneNumber"
+            id="field_bizPhoneNumber"
+            data-cy="bizPhoneNumber"
+            formControlName="bizPhoneNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizPhoneCode" for="field_bizPhoneCode">Biz Phone Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bizPhoneCode"
+            id="field_bizPhoneCode"
+            data-cy="bizPhoneCode"
+            formControlName="bizPhoneCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizPhoneIsoCode" for="field_bizPhoneIsoCode"
+            >Biz Phone Iso Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bizPhoneIsoCode"
+            id="field_bizPhoneIsoCode"
+            data-cy="bizPhoneIsoCode"
+            formControlName="bizPhoneIsoCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizWebsite" for="field_bizWebsite">Biz Website</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bizWebsite"
+            id="field_bizWebsite"
+            data-cy="bizWebsite"
+            formControlName="bizWebsite"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.bizDesc" for="field_bizDesc">Biz Desc</label>
+          <input type="text" class="form-control" name="bizDesc" id="field_bizDesc" data-cy="bizDesc" formControlName="bizDesc" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.enable" for="field_enable">Enable</label>
+          <input type="checkbox" class="form-check" name="enable" id="field_enable" data-cy="enable" formControlName="enable" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.createdByUid" for="field_createdByUid">Created By Uid</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdByUid"
+            id="field_createdByUid"
+            data-cy="createdByUid"
+            formControlName="createdByUid"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.updatedByUid" for="field_updatedByUid">Updated By Uid</label>
+          <input
+            type="number"
+            class="form-control"
+            name="updatedByUid"
+            id="field_updatedByUid"
+            data-cy="updatedByUid"
+            formControlName="updatedByUid"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.modifiedDate" for="field_modifiedDate">Modified Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedDate"
+            id="field_modifiedDate"
+            data-cy="modifiedDate"
+            formControlName="modifiedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.profileBiz.createdDate" for="field_createdDate">Created Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdDate"
+            id="field_createdDate"
+            data-cy="createdDate"
+            formControlName="createdDate"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span qmsTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

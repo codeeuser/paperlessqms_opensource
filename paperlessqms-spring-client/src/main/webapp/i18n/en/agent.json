@@ -1,0 +1,34 @@
+{
+  "paperlessqmsApp": {
+    "agent": {
+      "home": {
+        "title": "Agents",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Agent",
+        "createOrEditLabel": "Create or edit a Agent",
+        "notFound": "No Agents found"
+      },
+      "created": "A new Agent is created with identifier {{ param }}",
+      "updated": "A Agent is updated with identifier {{ param }}",
+      "deleted": "A Agent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Agent {{ id }}?"
+      },
+      "detail": {
+        "title": "Agent"
+      },
+      "id": "ID",
+      "profileBizId": "Profile Biz Id",
+      "uid": "Uid",
+      "login": "Login",
+      "email": "Email",
+      "updateUid": "Update Uid",
+      "enable": "Enable",
+      "orderNum": "Order Num",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "queueTerminal": "Queue Terminal",
+      "queueDepartment": "Queue Department"
+    }
+  }
+}

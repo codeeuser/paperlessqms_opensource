@@ -1,0 +1,359 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155840"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "token_issued",
+  "fields": [
+    {
+      "fieldName": "uid",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "profileBizId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneIsoCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userFirstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userLastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tokenLetter",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tokenNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "serviceName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "serviceId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "terminalName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "terminalId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "orgTerminalName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orgTerminalId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "statusName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusCode",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "isPending",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isQueue",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isReject",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isAbsent",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isCancel",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isRecall",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isCompleted",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isTimeout",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "assignedDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "assignedYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assignedMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assignedDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assignedHour",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assignedMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assignedTimeZoneOffset",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assignedTimeZoneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assignedNow",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "assignedUid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "completedYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "completedMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "completedDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "completedHour",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "completedMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "completedTimeZoneOffset",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "completedTimeZoneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "completedNow",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "completedDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "completedUid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createdYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdHour",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdTimeZoneOffset",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdTimeZoneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdNow",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "modifiedYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedHour",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedTimeZoneOffset",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedTimeZoneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedNow",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "transferedYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transferedMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transferedDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transferedHour",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transferedMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transferedDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "transferedTimeZoneOffset",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "transferedTimeZoneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transferedNow",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "transferedUid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "issuedFrom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "departmentName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "feedback",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "smsComingCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pushComingCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "orderId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reset",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "resetDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "resetUid",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "TokenIssued",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

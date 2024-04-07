@@ -1,0 +1,68 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155640"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "queue_service",
+  "fields": [
+    {
+      "fieldName": "profileBizId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "letter",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "start",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "desc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "orderNum",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "enableCatalog",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "QueueService",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "queueDepartment",
+      "otherEntityRelationshipName": "queueService",
+      "relationshipName": "queueDepartment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

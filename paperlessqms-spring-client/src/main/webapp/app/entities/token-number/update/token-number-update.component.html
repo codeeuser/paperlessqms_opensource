@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="qms-token-number-heading"
+        data-cy="TokenNumberCreateUpdateHeading"
+        qmsTranslate="paperlessqmsApp.tokenNumber.home.createOrEditLabel"
+      >
+        Create or edit a Token Number
+      </h2>
+
+      <div>
+        <qms-alert-error></qms-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" qmsTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenNumber.number" for="field_number">Number</label>
+          <input type="number" class="form-control" name="number" id="field_number" data-cy="number" formControlName="number" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenNumber.departmentId" for="field_departmentId">Department Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="departmentId"
+            id="field_departmentId"
+            data-cy="departmentId"
+            formControlName="departmentId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenNumber.serviceId" for="field_serviceId">Service Id</label>
+          <input type="number" class="form-control" name="serviceId" id="field_serviceId" data-cy="serviceId" formControlName="serviceId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenNumber.reset" for="field_reset">Reset</label>
+          <input type="checkbox" class="form-check" name="reset" id="field_reset" data-cy="reset" formControlName="reset" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span qmsTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

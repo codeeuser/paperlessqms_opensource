@@ -1,0 +1,28 @@
+{
+  "paperlessqmsApp": {
+    "maxToken": {
+      "home": {
+        "title": "Max Tokens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Max Token",
+        "createOrEditLabel": "Create or edit a Max Token",
+        "notFound": "No Max Tokens found"
+      },
+      "created": "A new Max Token is created with identifier {{ param }}",
+      "updated": "A Max Token is updated with identifier {{ param }}",
+      "deleted": "A Max Token is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Max Token {{ id }}?"
+      },
+      "detail": {
+        "title": "Max Token"
+      },
+      "id": "ID",
+      "profileBizId": "Profile Biz Id",
+      "maxToken": "Max Token",
+      "dayNum": "Day Num",
+      "modifiedDate": "Modified Date",
+      "createdDate": "Created Date"
+    }
+  }
+}

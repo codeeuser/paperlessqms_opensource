@@ -1,0 +1,26 @@
+@if (agent) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(agent.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="agentDeleteDialogHeading" qmsTranslate="entity.delete.title">Confirm delete operation</h4>
+
+      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <qms-alert-error></qms-alert-error>
+      <p id="qms-delete-agent-heading" qmsTranslate="paperlessqmsApp.agent.delete.question" [translateValues]="{ id: agent.id }">
+        Are you sure you want to delete Agent {{ agent.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="qms-confirm-delete-agent" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span qmsTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

@@ -1,0 +1,69 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155740"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "agent",
+  "fields": [
+    {
+      "fieldName": "profileBizId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "uid",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "updateUid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "enable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "orderNum",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Agent",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "queueTerminal",
+      "otherEntityRelationshipName": "agent",
+      "relationshipName": "queueTerminal",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "queueDepartment",
+      "otherEntityRelationshipName": "agent",
+      "relationshipName": "queueDepartment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

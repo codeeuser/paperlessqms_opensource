@@ -1,0 +1,46 @@
+{
+  "paperlessqmsApp": {
+    "queueDepartment": {
+      "home": {
+        "title": "Queue Departments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Queue Department",
+        "createOrEditLabel": "Create or edit a Queue Department",
+        "notFound": "No Queue Departments found"
+      },
+      "created": "A new Queue Department is created with identifier {{ param }}",
+      "updated": "A Queue Department is updated with identifier {{ param }}",
+      "deleted": "A Queue Department is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Queue Department {{ id }}?"
+      },
+      "detail": {
+        "title": "Queue Department"
+      },
+      "id": "ID",
+      "profileBizId": "Profile Biz Id",
+      "bizName": "Biz Name",
+      "bizCategoryName": "Biz Category Name",
+      "name": "Name",
+      "desc": "Desc",
+      "lat": "Lat",
+      "lng": "Lng",
+      "timeZone": "Time Zone",
+      "threshold": "Threshold",
+      "nearbyRange": "Nearby Range",
+      "tokenTimeoutMin": "Token Timeout Min",
+      "selected": "Selected",
+      "enable": "Enable",
+      "orderNum": "Order Num",
+      "currencySymbol": "Currency Symbol",
+      "lenMetric": "Len Metric",
+      "currencyCode": "Currency Code",
+      "bannerName": "Banner Name",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "agent": "Agent",
+      "queueTerminal": "Queue Terminal",
+      "queueService": "Queue Service"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "paperlessqms",
+    "creationTimestamp": 1709135659660,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "devServerPort": 4200,
+    "entities": [
+      "ProfileBiz",
+      "QueueDepartment",
+      "QueueTerminal",
+      "QueueService",
+      "Agent",
+      "TokenIssued",
+      "TokenNumber",
+      "MaxToken",
+      "OpenHour"
+    ],
+    "jhiPrefix": "qms",
+    "jhipsterVersion": "8.1.0",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1709136100000,
+    "nativeLanguage": "en",
+    "packageFolder": "com/wheref/paperlessqms",
+    "packageName": "com.wheref.paperlessqms",
+    "serverPort": "8090",
+    "skipClient": false,
+    "skipServer": true,
+    "websocket": "spring-websocket"
+  }
+}

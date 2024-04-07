@@ -1,0 +1,171 @@
+<div>
+  <h2 id="page-heading" data-cy="OpenHourHeading">
+    <span qmsTranslate="paperlessqmsApp.openHour.home.title">Open Hours</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.openHour.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-open-hour"
+        [routerLink]="['/open-hour/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.openHour.home.createLabel">Create a new Open Hour</span>
+      </button>
+    </div>
+  </h2>
+
+  <qms-alert-error></qms-alert-error>
+
+  <qms-alert></qms-alert>
+
+  <qms-filter [filters]="filters"></qms-filter>
+
+  @if (openHours?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span qmsTranslate="paperlessqmsApp.openHour.home.notFound">No Open Hours found</span>
+    </div>
+  }
+
+  @if (openHours && openHours.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr qmsSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" qmsSortBy="id">
+              <div class="d-flex">
+                <span qmsTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="profileBizId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.profileBizId">Profile Biz Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="startHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.startHour">Start Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="startMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.startMin">Start Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="endHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.endHour">End Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="endMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.endMin">End Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="dayNum">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.dayNum">Day Num</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="enable">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.enable">Enable</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.modifiedDate">Modified Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.openHour.createdDate">Created Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (openHour of openHours; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/open-hour', openHour.id, 'view']">{{ openHour.id }}</a>
+              </td>
+              <td>{{ openHour.profileBizId }}</td>
+              <td>{{ openHour.startHour }}</td>
+              <td>{{ openHour.startMin }}</td>
+              <td>{{ openHour.endHour }}</td>
+              <td>{{ openHour.endMin }}</td>
+              <td>{{ openHour.dayNum }}</td>
+              <td>{{ openHour.enable }}</td>
+              <td>{{ openHour.modifiedDate }}</td>
+              <td>{{ openHour.createdDate }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/open-hour', openHour.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/open-hour', openHour.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(openHour)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (openHours && openHours.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <qms-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></qms-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

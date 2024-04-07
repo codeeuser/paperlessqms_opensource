@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (agent) {
+      <div>
+        <h2 data-cy="agentDetailsHeading"><span qmsTranslate="paperlessqmsApp.agent.detail.title">Agent</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ agent.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ agent.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.uid">Uid</span></dt>
+          <dd>
+            <span>{{ agent.uid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.login">Login</span></dt>
+          <dd>
+            <span>{{ agent.login }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.email">Email</span></dt>
+          <dd>
+            <span>{{ agent.email }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.updateUid">Update Uid</span></dt>
+          <dd>
+            <span>{{ agent.updateUid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.enable">Enable</span></dt>
+          <dd>
+            <span>{{ agent.enable }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.orderNum">Order Num</span></dt>
+          <dd>
+            <span>{{ agent.orderNum }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ agent.createdDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ agent.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.queueTerminal">Queue Terminal</span></dt>
+          <dd>
+            @if (agent.queueTerminal) {
+              <div>
+                <a [routerLink]="['/queue-terminal', agent.queueTerminal.id, 'view']">{{ agent.queueTerminal.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.agent.queueDepartment">Queue Department</span></dt>
+          <dd>
+            @if (agent.queueDepartment) {
+              <div>
+                <a [routerLink]="['/queue-department', agent.queueDepartment.id, 'view']">{{ agent.queueDepartment.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/agent', agent.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (queueTerminal) {
+      <div>
+        <h2 data-cy="queueTerminalDetailsHeading"><span qmsTranslate="paperlessqmsApp.queueTerminal.detail.title">Queue Terminal</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ queueTerminal.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ queueTerminal.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.name">Name</span></dt>
+          <dd>
+            <span>{{ queueTerminal.name }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.enable">Enable</span></dt>
+          <dd>
+            <span>{{ queueTerminal.enable }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.orderNum">Order Num</span></dt>
+          <dd>
+            <span>{{ queueTerminal.orderNum }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ queueTerminal.createdDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ queueTerminal.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueTerminal.queueDepartment">Queue Department</span></dt>
+          <dd>
+            @if (queueTerminal.queueDepartment) {
+              <div>
+                <a [routerLink]="['/queue-department', queueTerminal.queueDepartment.id, 'view']">{{ queueTerminal.queueDepartment.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/queue-terminal', queueTerminal.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

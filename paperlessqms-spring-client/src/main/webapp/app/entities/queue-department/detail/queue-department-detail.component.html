@@ -1,0 +1,112 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (queueDepartment) {
+      <div>
+        <h2 data-cy="queueDepartmentDetailsHeading">
+          <span qmsTranslate="paperlessqmsApp.queueDepartment.detail.title">Queue Department</span>
+        </h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ queueDepartment.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ queueDepartment.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.bizName">Biz Name</span></dt>
+          <dd>
+            <span>{{ queueDepartment.bizName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.bizCategoryName">Biz Category Name</span></dt>
+          <dd>
+            <span>{{ queueDepartment.bizCategoryName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.name">Name</span></dt>
+          <dd>
+            <span>{{ queueDepartment.name }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.desc">Desc</span></dt>
+          <dd>
+            <span>{{ queueDepartment.desc }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.lat">Lat</span></dt>
+          <dd>
+            <span>{{ queueDepartment.lat }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.lng">Lng</span></dt>
+          <dd>
+            <span>{{ queueDepartment.lng }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.timeZone">Time Zone</span></dt>
+          <dd>
+            <span>{{ queueDepartment.timeZone }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.threshold">Threshold</span></dt>
+          <dd>
+            <span>{{ queueDepartment.threshold }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.nearbyRange">Nearby Range</span></dt>
+          <dd>
+            <span>{{ queueDepartment.nearbyRange }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.tokenTimeoutMin">Token Timeout Min</span></dt>
+          <dd>
+            <span>{{ queueDepartment.tokenTimeoutMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.selected">Selected</span></dt>
+          <dd>
+            <span>{{ queueDepartment.selected }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.enable">Enable</span></dt>
+          <dd>
+            <span>{{ queueDepartment.enable }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.orderNum">Order Num</span></dt>
+          <dd>
+            <span>{{ queueDepartment.orderNum }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.currencySymbol">Currency Symbol</span></dt>
+          <dd>
+            <span>{{ queueDepartment.currencySymbol }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.lenMetric">Len Metric</span></dt>
+          <dd>
+            <span>{{ queueDepartment.lenMetric }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.currencyCode">Currency Code</span></dt>
+          <dd>
+            <span>{{ queueDepartment.currencyCode }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.bannerName">Banner Name</span></dt>
+          <dd>
+            <span>{{ queueDepartment.bannerName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ queueDepartment.createdDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueDepartment.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ queueDepartment.modifiedDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/queue-department', queueDepartment.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

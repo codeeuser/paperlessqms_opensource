@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity TokenIssued.
+    -->
+    <changeSet id="20240228155507-1" author="jhipster">
+        <createTable tableName="token_issued">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="profile_biz_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="phone_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="phone_iso_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="phone_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_first_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_last_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="token_letter" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="token_number" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="service_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="service_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="terminal_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="terminal_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="org_terminal_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="org_terminal_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="status_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="status_code" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_pending" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_queue" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_reject" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_absent" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_cancel" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_recall" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_completed" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_timeout" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_date" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_hour" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_min" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_time_zone_offset" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_time_zone_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_now" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigned_uid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_hour" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_min" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_time_zone_offset" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_time_zone_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_now" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_date" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="completed_uid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_hour" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_min" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_time_zone_offset" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_time_zone_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_now" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_date" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_hour" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_min" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_time_zone_offset" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_time_zone_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_now" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="modified_date" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_year" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_month" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_day" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_hour" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_min" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_date" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_time_zone_offset" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_time_zone_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_now" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="transfered_uid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="issued_from" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="department_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="department_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="biz_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="rating" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="feedback" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sms_coming_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="push_coming_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="order_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="reset" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="reset_date" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="reset_uid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240228155507-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/token_issued.csv"
+                  separator=";"
+                  tableName="token_issued"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="uid" type="numeric"/>
+            <column name="profile_biz_id" type="numeric"/>
+            <column name="phone_number" type="string"/>
+            <column name="phone_iso_code" type="string"/>
+            <column name="phone_code" type="string"/>
+            <column name="user_email" type="string"/>
+            <column name="user_first_name" type="string"/>
+            <column name="user_last_name" type="string"/>
+            <column name="token_letter" type="string"/>
+            <column name="token_number" type="numeric"/>
+            <column name="service_name" type="string"/>
+            <column name="service_id" type="numeric"/>
+            <column name="terminal_name" type="string"/>
+            <column name="terminal_id" type="numeric"/>
+            <column name="org_terminal_name" type="string"/>
+            <column name="org_terminal_id" type="numeric"/>
+            <column name="status_name" type="string"/>
+            <column name="status_code" type="numeric"/>
+            <column name="is_pending" type="boolean"/>
+            <column name="is_queue" type="boolean"/>
+            <column name="is_reject" type="boolean"/>
+            <column name="is_absent" type="boolean"/>
+            <column name="is_cancel" type="boolean"/>
+            <column name="is_recall" type="boolean"/>
+            <column name="is_completed" type="boolean"/>
+            <column name="is_timeout" type="boolean"/>
+            <column name="assigned_date" type="numeric"/>
+            <column name="assigned_year" type="numeric"/>
+            <column name="assigned_month" type="numeric"/>
+            <column name="assigned_day" type="numeric"/>
+            <column name="assigned_hour" type="numeric"/>
+            <column name="assigned_min" type="numeric"/>
+            <column name="assigned_time_zone_offset" type="numeric"/>
+            <column name="assigned_time_zone_name" type="string"/>
+            <column name="assigned_now" type="string"/>
+            <column name="assigned_uid" type="numeric"/>
+            <column name="completed_year" type="numeric"/>
+            <column name="completed_month" type="numeric"/>
+            <column name="completed_day" type="numeric"/>
+            <column name="completed_hour" type="numeric"/>
+            <column name="completed_min" type="numeric"/>
+            <column name="completed_time_zone_offset" type="numeric"/>
+            <column name="completed_time_zone_name" type="string"/>
+            <column name="completed_now" type="string"/>
+            <column name="completed_date" type="numeric"/>
+            <column name="completed_uid" type="numeric"/>
+            <column name="created_year" type="numeric"/>
+            <column name="created_month" type="numeric"/>
+            <column name="created_day" type="numeric"/>
+            <column name="created_hour" type="numeric"/>
+            <column name="created_min" type="numeric"/>
+            <column name="created_time_zone_offset" type="numeric"/>
+            <column name="created_time_zone_name" type="string"/>
+            <column name="created_now" type="string"/>
+            <column name="created_date" type="numeric"/>
+            <column name="modified_year" type="numeric"/>
+            <column name="modified_month" type="numeric"/>
+            <column name="modified_day" type="numeric"/>
+            <column name="modified_hour" type="numeric"/>
+            <column name="modified_min" type="numeric"/>
+            <column name="modified_time_zone_offset" type="numeric"/>
+            <column name="modified_time_zone_name" type="string"/>
+            <column name="modified_now" type="string"/>
+            <column name="modified_date" type="numeric"/>
+            <column name="transfered_year" type="numeric"/>
+            <column name="transfered_month" type="numeric"/>
+            <column name="transfered_day" type="numeric"/>
+            <column name="transfered_hour" type="numeric"/>
+            <column name="transfered_min" type="numeric"/>
+            <column name="transfered_date" type="numeric"/>
+            <column name="transfered_time_zone_offset" type="numeric"/>
+            <column name="transfered_time_zone_name" type="string"/>
+            <column name="transfered_now" type="string"/>
+            <column name="transfered_uid" type="numeric"/>
+            <column name="issued_from" type="string"/>
+            <column name="department_id" type="numeric"/>
+            <column name="department_name" type="string"/>
+            <column name="biz_name" type="string"/>
+            <column name="rating" type="numeric"/>
+            <column name="feedback" type="string"/>
+            <column name="sms_coming_count" type="numeric"/>
+            <column name="push_coming_count" type="numeric"/>
+            <column name="order_id" type="string"/>
+            <column name="reset" type="boolean"/>
+            <column name="reset_date" type="numeric"/>
+            <column name="reset_uid" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

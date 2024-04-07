@@ -1,0 +1,31 @@
+{
+  "paperlessqmsApp": {
+    "queueTerminal": {
+      "home": {
+        "title": "Queue Terminals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Queue Terminal",
+        "createOrEditLabel": "Create or edit a Queue Terminal",
+        "notFound": "No Queue Terminals found"
+      },
+      "created": "A new Queue Terminal is created with identifier {{ param }}",
+      "updated": "A Queue Terminal is updated with identifier {{ param }}",
+      "deleted": "A Queue Terminal is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Queue Terminal {{ id }}?"
+      },
+      "detail": {
+        "title": "Queue Terminal"
+      },
+      "id": "ID",
+      "profileBizId": "Profile Biz Id",
+      "name": "Name",
+      "enable": "Enable",
+      "orderNum": "Order Num",
+      "createdDate": "Created Date",
+      "modifiedDate": "Modified Date",
+      "queueDepartment": "Queue Department",
+      "agent": "Agent"
+    }
+  }
+}

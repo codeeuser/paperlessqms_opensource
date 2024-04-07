@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (profileBiz) {
+      <div>
+        <h2 data-cy="profileBizDetailsHeading"><span qmsTranslate="paperlessqmsApp.profileBiz.detail.title">Profile Biz</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ profileBiz.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizName">Biz Name</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizLogoBase64">Biz Logo Base 64</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizLogoBase64 }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizPhotoBase64">Biz Photo Base 64</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizPhotoBase64 }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizAddress">Biz Address</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizAddress }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizLevel">Biz Level</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizLevel }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizEmail">Biz Email</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizEmail }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizPhoneNumber">Biz Phone Number</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizPhoneNumber }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizPhoneCode">Biz Phone Code</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizPhoneCode }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizPhoneIsoCode">Biz Phone Iso Code</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizPhoneIsoCode }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizWebsite">Biz Website</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizWebsite }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.bizDesc">Biz Desc</span></dt>
+          <dd>
+            <span>{{ profileBiz.bizDesc }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.enable">Enable</span></dt>
+          <dd>
+            <span>{{ profileBiz.enable }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.createdByUid">Created By Uid</span></dt>
+          <dd>
+            <span>{{ profileBiz.createdByUid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.updatedByUid">Updated By Uid</span></dt>
+          <dd>
+            <span>{{ profileBiz.updatedByUid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ profileBiz.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.profileBiz.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ profileBiz.createdDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/profile-biz', profileBiz.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

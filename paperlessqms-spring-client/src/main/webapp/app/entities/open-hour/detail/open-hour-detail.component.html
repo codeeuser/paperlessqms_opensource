@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (openHour) {
+      <div>
+        <h2 data-cy="openHourDetailsHeading"><span qmsTranslate="paperlessqmsApp.openHour.detail.title">Open Hour</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ openHour.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ openHour.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.startHour">Start Hour</span></dt>
+          <dd>
+            <span>{{ openHour.startHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.startMin">Start Min</span></dt>
+          <dd>
+            <span>{{ openHour.startMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.endHour">End Hour</span></dt>
+          <dd>
+            <span>{{ openHour.endHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.endMin">End Min</span></dt>
+          <dd>
+            <span>{{ openHour.endMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.dayNum">Day Num</span></dt>
+          <dd>
+            <span>{{ openHour.dayNum }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.enable">Enable</span></dt>
+          <dd>
+            <span>{{ openHour.enable }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ openHour.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.openHour.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ openHour.createdDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/open-hour', openHour.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

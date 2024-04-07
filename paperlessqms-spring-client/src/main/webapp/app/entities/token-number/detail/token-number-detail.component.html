@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tokenNumber) {
+      <div>
+        <h2 data-cy="tokenNumberDetailsHeading"><span qmsTranslate="paperlessqmsApp.tokenNumber.detail.title">Token Number</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ tokenNumber.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenNumber.number">Number</span></dt>
+          <dd>
+            <span>{{ tokenNumber.number }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenNumber.departmentId">Department Id</span></dt>
+          <dd>
+            <span>{{ tokenNumber.departmentId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenNumber.serviceId">Service Id</span></dt>
+          <dd>
+            <span>{{ tokenNumber.serviceId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenNumber.reset">Reset</span></dt>
+          <dd>
+            <span>{{ tokenNumber.reset }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/token-number', tokenNumber.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

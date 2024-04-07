@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="qms-max-token-heading" data-cy="MaxTokenCreateUpdateHeading" qmsTranslate="paperlessqmsApp.maxToken.home.createOrEditLabel">
+        Create or edit a Max Token
+      </h2>
+
+      <div>
+        <qms-alert-error></qms-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" qmsTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.maxToken.profileBizId" for="field_profileBizId">Profile Biz Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="profileBizId"
+            id="field_profileBizId"
+            data-cy="profileBizId"
+            formControlName="profileBizId"
+          />
+          @if (editForm.get('profileBizId')!.invalid && (editForm.get('profileBizId')!.dirty || editForm.get('profileBizId')!.touched)) {
+            <div>
+              @if (editForm.get('profileBizId')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('profileBizId')?.errors?.number"
+                qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.maxToken.maxToken" for="field_maxToken">Max Token</label>
+          <input type="number" class="form-control" name="maxToken" id="field_maxToken" data-cy="maxToken" formControlName="maxToken" />
+          @if (editForm.get('maxToken')!.invalid && (editForm.get('maxToken')!.dirty || editForm.get('maxToken')!.touched)) {
+            <div>
+              @if (editForm.get('maxToken')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('maxToken')?.errors?.number"
+                qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.maxToken.dayNum" for="field_dayNum">Day Num</label>
+          <input type="number" class="form-control" name="dayNum" id="field_dayNum" data-cy="dayNum" formControlName="dayNum" />
+          @if (editForm.get('dayNum')!.invalid && (editForm.get('dayNum')!.dirty || editForm.get('dayNum')!.touched)) {
+            <div>
+              @if (editForm.get('dayNum')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('dayNum')?.errors?.number"
+                qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.maxToken.modifiedDate" for="field_modifiedDate">Modified Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedDate"
+            id="field_modifiedDate"
+            data-cy="modifiedDate"
+            formControlName="modifiedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.maxToken.createdDate" for="field_createdDate">Created Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdDate"
+            id="field_createdDate"
+            data-cy="createdDate"
+            formControlName="createdDate"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span qmsTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

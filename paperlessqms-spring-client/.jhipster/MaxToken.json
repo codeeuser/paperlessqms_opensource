@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20240228160040"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "max_token",
+  "fields": [
+    {
+      "fieldName": "profileBizId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "maxToken",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dayNum",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "MaxToken",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

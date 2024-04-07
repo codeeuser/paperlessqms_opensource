@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (maxToken) {
+      <div>
+        <h2 data-cy="maxTokenDetailsHeading"><span qmsTranslate="paperlessqmsApp.maxToken.detail.title">Max Token</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ maxToken.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.maxToken.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ maxToken.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.maxToken.maxToken">Max Token</span></dt>
+          <dd>
+            <span>{{ maxToken.maxToken }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.maxToken.dayNum">Day Num</span></dt>
+          <dd>
+            <span>{{ maxToken.dayNum }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.maxToken.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ maxToken.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.maxToken.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ maxToken.createdDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/max-token', maxToken.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

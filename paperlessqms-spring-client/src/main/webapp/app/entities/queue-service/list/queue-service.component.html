@@ -1,0 +1,202 @@
+<div>
+  <h2 id="page-heading" data-cy="QueueServiceHeading">
+    <span qmsTranslate="paperlessqmsApp.queueService.home.title">Queue Services</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.queueService.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-queue-service"
+        [routerLink]="['/queue-service/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.queueService.home.createLabel">Create a new Queue Service</span>
+      </button>
+    </div>
+  </h2>
+
+  <qms-alert-error></qms-alert-error>
+
+  <qms-alert></qms-alert>
+
+  <qms-filter [filters]="filters"></qms-filter>
+
+  @if (queueServices?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span qmsTranslate="paperlessqmsApp.queueService.home.notFound">No Queue Services found</span>
+    </div>
+  }
+
+  @if (queueServices && queueServices.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr qmsSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" qmsSortBy="id">
+              <div class="d-flex">
+                <span qmsTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="profileBizId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.profileBizId">Profile Biz Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="name">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.name">Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="type">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.type">Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="letter">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.letter">Letter</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="start">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.start">Start</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="desc">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.desc">Desc</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="enable">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.enable">Enable</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="orderNum">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.orderNum">Order Num</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="enableCatalog">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.enableCatalog">Enable Catalog</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.createdDate">Created Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.modifiedDate">Modified Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="queueDepartment.id">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.queueService.queueDepartment">Queue Department</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (queueService of queueServices; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/queue-service', queueService.id, 'view']">{{ queueService.id }}</a>
+              </td>
+              <td>{{ queueService.profileBizId }}</td>
+              <td>{{ queueService.name }}</td>
+              <td>{{ queueService.type }}</td>
+              <td>{{ queueService.letter }}</td>
+              <td>{{ queueService.start }}</td>
+              <td>{{ queueService.desc }}</td>
+              <td>{{ queueService.enable }}</td>
+              <td>{{ queueService.orderNum }}</td>
+              <td>{{ queueService.enableCatalog }}</td>
+              <td>{{ queueService.createdDate }}</td>
+              <td>{{ queueService.modifiedDate }}</td>
+              <td>
+                @if (queueService.queueDepartment) {
+                  <div>
+                    <a [routerLink]="['/queue-department', queueService.queueDepartment.id, 'view']">{{
+                      queueService.queueDepartment.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/queue-service', queueService.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/queue-service', queueService.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(queueService)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (queueServices && queueServices.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <qms-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></qms-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

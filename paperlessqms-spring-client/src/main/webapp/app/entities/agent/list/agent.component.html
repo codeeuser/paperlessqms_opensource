@@ -1,0 +1,197 @@
+<div>
+  <h2 id="page-heading" data-cy="AgentHeading">
+    <span qmsTranslate="paperlessqmsApp.agent.home.title">Agents</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.agent.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-agent"
+        [routerLink]="['/agent/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.agent.home.createLabel">Create a new Agent</span>
+      </button>
+    </div>
+  </h2>
+
+  <qms-alert-error></qms-alert-error>
+
+  <qms-alert></qms-alert>
+
+  <qms-filter [filters]="filters"></qms-filter>
+
+  @if (agents?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span qmsTranslate="paperlessqmsApp.agent.home.notFound">No Agents found</span>
+    </div>
+  }
+
+  @if (agents && agents.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr qmsSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" qmsSortBy="id">
+              <div class="d-flex">
+                <span qmsTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="profileBizId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.profileBizId">Profile Biz Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="uid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.uid">Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="login">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.login">Login</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="email">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="updateUid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.updateUid">Update Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="enable">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.enable">Enable</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="orderNum">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.orderNum">Order Num</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.createdDate">Created Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.modifiedDate">Modified Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="queueTerminal.id">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.queueTerminal">Queue Terminal</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="queueDepartment.id">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.agent.queueDepartment">Queue Department</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (agent of agents; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/agent', agent.id, 'view']">{{ agent.id }}</a>
+              </td>
+              <td>{{ agent.profileBizId }}</td>
+              <td>{{ agent.uid }}</td>
+              <td>{{ agent.login }}</td>
+              <td>{{ agent.email }}</td>
+              <td>{{ agent.updateUid }}</td>
+              <td>{{ agent.enable }}</td>
+              <td>{{ agent.orderNum }}</td>
+              <td>{{ agent.createdDate }}</td>
+              <td>{{ agent.modifiedDate }}</td>
+              <td>
+                @if (agent.queueTerminal) {
+                  <div>
+                    <a [routerLink]="['/queue-terminal', agent.queueTerminal.id, 'view']">{{ agent.queueTerminal.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (agent.queueDepartment) {
+                  <div>
+                    <a [routerLink]="['/queue-department', agent.queueDepartment.id, 'view']">{{ agent.queueDepartment.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/agent', agent.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/agent', agent.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(agent)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (agents && agents.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <qms-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></qms-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

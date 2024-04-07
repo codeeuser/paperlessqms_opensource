@@ -1,0 +1,787 @@
+<div>
+  <h2 id="page-heading" data-cy="TokenIssuedHeading">
+    <span qmsTranslate="paperlessqmsApp.tokenIssued.home.title">Token Issueds</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.tokenIssued.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-token-issued"
+        [routerLink]="['/token-issued/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.tokenIssued.home.createLabel">Create a new Token Issued</span>
+      </button>
+    </div>
+  </h2>
+
+  <qms-alert-error></qms-alert-error>
+
+  <qms-alert></qms-alert>
+
+  <qms-filter [filters]="filters"></qms-filter>
+
+  @if (tokenIssueds?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span qmsTranslate="paperlessqmsApp.tokenIssued.home.notFound">No Token Issueds found</span>
+    </div>
+  }
+
+  @if (tokenIssueds && tokenIssueds.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr qmsSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" qmsSortBy="id">
+              <div class="d-flex">
+                <span qmsTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="uid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.uid">Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="profileBizId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.profileBizId">Profile Biz Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="phoneNumber">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.phoneNumber">Phone Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="phoneIsoCode">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.phoneIsoCode">Phone Iso Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="phoneCode">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.phoneCode">Phone Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="userEmail">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.userEmail">User Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="userFirstName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.userFirstName">User First Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="userLastName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.userLastName">User Last Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="tokenLetter">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.tokenLetter">Token Letter</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="tokenNumber">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.tokenNumber">Token Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="serviceName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.serviceName">Service Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="serviceId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.serviceId">Service Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="terminalName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.terminalName">Terminal Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="terminalId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.terminalId">Terminal Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="orgTerminalName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.orgTerminalName">Org Terminal Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="orgTerminalId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.orgTerminalId">Org Terminal Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="statusName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.statusName">Status Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="statusCode">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.statusCode">Status Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isPending">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isPending">Is Pending</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isQueue">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isQueue">Is Queue</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isReject">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isReject">Is Reject</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isAbsent">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isAbsent">Is Absent</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isCancel">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isCancel">Is Cancel</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isRecall">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isRecall">Is Recall</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isCompleted">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isCompleted">Is Completed</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="isTimeout">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.isTimeout">Is Timeout</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedDate">Assigned Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedYear">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedYear">Assigned Year</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedMonth">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedMonth">Assigned Month</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedDay">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedDay">Assigned Day</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedHour">Assigned Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedMin">Assigned Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedTimeZoneOffset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedTimeZoneOffset">Assigned Time Zone Offset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedTimeZoneName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedTimeZoneName">Assigned Time Zone Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedNow">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedNow">Assigned Now</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="assignedUid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.assignedUid">Assigned Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedYear">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedYear">Completed Year</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedMonth">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedMonth">Completed Month</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedDay">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedDay">Completed Day</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedHour">Completed Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedMin">Completed Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedTimeZoneOffset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedTimeZoneOffset">Completed Time Zone Offset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedTimeZoneName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedTimeZoneName">Completed Time Zone Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedNow">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedNow">Completed Now</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedDate">Completed Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="completedUid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.completedUid">Completed Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdYear">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdYear">Created Year</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdMonth">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdMonth">Created Month</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdDay">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdDay">Created Day</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdHour">Created Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdMin">Created Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdTimeZoneOffset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdTimeZoneOffset">Created Time Zone Offset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdTimeZoneName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdTimeZoneName">Created Time Zone Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdNow">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdNow">Created Now</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="createdDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.createdDate">Created Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedYear">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedYear">Modified Year</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedMonth">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedMonth">Modified Month</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedDay">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedDay">Modified Day</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedHour">Modified Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedMin">Modified Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedTimeZoneOffset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedTimeZoneOffset">Modified Time Zone Offset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedTimeZoneName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedTimeZoneName">Modified Time Zone Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedNow">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedNow">Modified Now</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="modifiedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedDate">Modified Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedYear">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedYear">Transfered Year</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedMonth">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedMonth">Transfered Month</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedDay">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedDay">Transfered Day</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedHour">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedHour">Transfered Hour</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedMin">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedMin">Transfered Min</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedDate">Transfered Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedTimeZoneOffset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedTimeZoneOffset">Transfered Time Zone Offset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedTimeZoneName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedTimeZoneName">Transfered Time Zone Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedNow">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedNow">Transfered Now</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="transferedUid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.transferedUid">Transfered Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="issuedFrom">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.issuedFrom">Issued From</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="departmentId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.departmentId">Department Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="departmentName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.departmentName">Department Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="bizName">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.bizName">Biz Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="rating">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.rating">Rating</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="feedback">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.feedback">Feedback</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="smsComingCount">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.smsComingCount">Sms Coming Count</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="pushComingCount">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.pushComingCount">Push Coming Count</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="orderId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.orderId">Order Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="reset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.reset">Reset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="resetDate">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.resetDate">Reset Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="resetUid">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenIssued.resetUid">Reset Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (tokenIssued of tokenIssueds; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/token-issued', tokenIssued.id, 'view']">{{ tokenIssued.id }}</a>
+              </td>
+              <td>{{ tokenIssued.uid }}</td>
+              <td>{{ tokenIssued.profileBizId }}</td>
+              <td>{{ tokenIssued.phoneNumber }}</td>
+              <td>{{ tokenIssued.phoneIsoCode }}</td>
+              <td>{{ tokenIssued.phoneCode }}</td>
+              <td>{{ tokenIssued.userEmail }}</td>
+              <td>{{ tokenIssued.userFirstName }}</td>
+              <td>{{ tokenIssued.userLastName }}</td>
+              <td>{{ tokenIssued.tokenLetter }}</td>
+              <td>{{ tokenIssued.tokenNumber }}</td>
+              <td>{{ tokenIssued.serviceName }}</td>
+              <td>{{ tokenIssued.serviceId }}</td>
+              <td>{{ tokenIssued.terminalName }}</td>
+              <td>{{ tokenIssued.terminalId }}</td>
+              <td>{{ tokenIssued.orgTerminalName }}</td>
+              <td>{{ tokenIssued.orgTerminalId }}</td>
+              <td>{{ tokenIssued.statusName }}</td>
+              <td>{{ tokenIssued.statusCode }}</td>
+              <td>{{ tokenIssued.isPending }}</td>
+              <td>{{ tokenIssued.isQueue }}</td>
+              <td>{{ tokenIssued.isReject }}</td>
+              <td>{{ tokenIssued.isAbsent }}</td>
+              <td>{{ tokenIssued.isCancel }}</td>
+              <td>{{ tokenIssued.isRecall }}</td>
+              <td>{{ tokenIssued.isCompleted }}</td>
+              <td>{{ tokenIssued.isTimeout }}</td>
+              <td>{{ tokenIssued.assignedDate }}</td>
+              <td>{{ tokenIssued.assignedYear }}</td>
+              <td>{{ tokenIssued.assignedMonth }}</td>
+              <td>{{ tokenIssued.assignedDay }}</td>
+              <td>{{ tokenIssued.assignedHour }}</td>
+              <td>{{ tokenIssued.assignedMin }}</td>
+              <td>{{ tokenIssued.assignedTimeZoneOffset }}</td>
+              <td>{{ tokenIssued.assignedTimeZoneName }}</td>
+              <td>{{ tokenIssued.assignedNow }}</td>
+              <td>{{ tokenIssued.assignedUid }}</td>
+              <td>{{ tokenIssued.completedYear }}</td>
+              <td>{{ tokenIssued.completedMonth }}</td>
+              <td>{{ tokenIssued.completedDay }}</td>
+              <td>{{ tokenIssued.completedHour }}</td>
+              <td>{{ tokenIssued.completedMin }}</td>
+              <td>{{ tokenIssued.completedTimeZoneOffset }}</td>
+              <td>{{ tokenIssued.completedTimeZoneName }}</td>
+              <td>{{ tokenIssued.completedNow }}</td>
+              <td>{{ tokenIssued.completedDate }}</td>
+              <td>{{ tokenIssued.completedUid }}</td>
+              <td>{{ tokenIssued.createdYear }}</td>
+              <td>{{ tokenIssued.createdMonth }}</td>
+              <td>{{ tokenIssued.createdDay }}</td>
+              <td>{{ tokenIssued.createdHour }}</td>
+              <td>{{ tokenIssued.createdMin }}</td>
+              <td>{{ tokenIssued.createdTimeZoneOffset }}</td>
+              <td>{{ tokenIssued.createdTimeZoneName }}</td>
+              <td>{{ tokenIssued.createdNow }}</td>
+              <td>{{ tokenIssued.createdDate }}</td>
+              <td>{{ tokenIssued.modifiedYear }}</td>
+              <td>{{ tokenIssued.modifiedMonth }}</td>
+              <td>{{ tokenIssued.modifiedDay }}</td>
+              <td>{{ tokenIssued.modifiedHour }}</td>
+              <td>{{ tokenIssued.modifiedMin }}</td>
+              <td>{{ tokenIssued.modifiedTimeZoneOffset }}</td>
+              <td>{{ tokenIssued.modifiedTimeZoneName }}</td>
+              <td>{{ tokenIssued.modifiedNow }}</td>
+              <td>{{ tokenIssued.modifiedDate }}</td>
+              <td>{{ tokenIssued.transferedYear }}</td>
+              <td>{{ tokenIssued.transferedMonth }}</td>
+              <td>{{ tokenIssued.transferedDay }}</td>
+              <td>{{ tokenIssued.transferedHour }}</td>
+              <td>{{ tokenIssued.transferedMin }}</td>
+              <td>{{ tokenIssued.transferedDate }}</td>
+              <td>{{ tokenIssued.transferedTimeZoneOffset }}</td>
+              <td>{{ tokenIssued.transferedTimeZoneName }}</td>
+              <td>{{ tokenIssued.transferedNow }}</td>
+              <td>{{ tokenIssued.transferedUid }}</td>
+              <td>{{ tokenIssued.issuedFrom }}</td>
+              <td>{{ tokenIssued.departmentId }}</td>
+              <td>{{ tokenIssued.departmentName }}</td>
+              <td>{{ tokenIssued.bizName }}</td>
+              <td>{{ tokenIssued.rating }}</td>
+              <td>{{ tokenIssued.feedback }}</td>
+              <td>{{ tokenIssued.smsComingCount }}</td>
+              <td>{{ tokenIssued.pushComingCount }}</td>
+              <td>{{ tokenIssued.orderId }}</td>
+              <td>{{ tokenIssued.reset }}</td>
+              <td>{{ tokenIssued.resetDate }}</td>
+              <td>{{ tokenIssued.resetUid }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/token-issued', tokenIssued.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/token-issued', tokenIssued.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(tokenIssued)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (tokenIssueds && tokenIssueds.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <qms-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></qms-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

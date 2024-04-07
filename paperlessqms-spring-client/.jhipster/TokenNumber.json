@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155940"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "token_number",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "serviceId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "reset",
+      "fieldType": "Boolean"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "TokenNumber",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

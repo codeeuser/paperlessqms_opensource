@@ -1,0 +1,374 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tokenIssued) {
+      <div>
+        <h2 data-cy="tokenIssuedDetailsHeading"><span qmsTranslate="paperlessqmsApp.tokenIssued.detail.title">Token Issued</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ tokenIssued.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.uid">Uid</span></dt>
+          <dd>
+            <span>{{ tokenIssued.uid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ tokenIssued.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.phoneNumber">Phone Number</span></dt>
+          <dd>
+            <span>{{ tokenIssued.phoneNumber }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.phoneIsoCode">Phone Iso Code</span></dt>
+          <dd>
+            <span>{{ tokenIssued.phoneIsoCode }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.phoneCode">Phone Code</span></dt>
+          <dd>
+            <span>{{ tokenIssued.phoneCode }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.userEmail">User Email</span></dt>
+          <dd>
+            <span>{{ tokenIssued.userEmail }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.userFirstName">User First Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.userFirstName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.userLastName">User Last Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.userLastName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.tokenLetter">Token Letter</span></dt>
+          <dd>
+            <span>{{ tokenIssued.tokenLetter }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.tokenNumber">Token Number</span></dt>
+          <dd>
+            <span>{{ tokenIssued.tokenNumber }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.serviceName">Service Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.serviceName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.serviceId">Service Id</span></dt>
+          <dd>
+            <span>{{ tokenIssued.serviceId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.terminalName">Terminal Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.terminalName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.terminalId">Terminal Id</span></dt>
+          <dd>
+            <span>{{ tokenIssued.terminalId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.orgTerminalName">Org Terminal Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.orgTerminalName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.orgTerminalId">Org Terminal Id</span></dt>
+          <dd>
+            <span>{{ tokenIssued.orgTerminalId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.statusName">Status Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.statusName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.statusCode">Status Code</span></dt>
+          <dd>
+            <span>{{ tokenIssued.statusCode }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isPending">Is Pending</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isPending }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isQueue">Is Queue</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isQueue }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isReject">Is Reject</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isReject }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isAbsent">Is Absent</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isAbsent }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isCancel">Is Cancel</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isCancel }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isRecall">Is Recall</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isRecall }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isCompleted">Is Completed</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isCompleted }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.isTimeout">Is Timeout</span></dt>
+          <dd>
+            <span>{{ tokenIssued.isTimeout }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedDate">Assigned Date</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedYear">Assigned Year</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedYear }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedMonth">Assigned Month</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedMonth }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedDay">Assigned Day</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedDay }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedHour">Assigned Hour</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedMin">Assigned Min</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedTimeZoneOffset">Assigned Time Zone Offset</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedTimeZoneOffset }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedTimeZoneName">Assigned Time Zone Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedTimeZoneName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedNow">Assigned Now</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedNow }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.assignedUid">Assigned Uid</span></dt>
+          <dd>
+            <span>{{ tokenIssued.assignedUid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedYear">Completed Year</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedYear }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedMonth">Completed Month</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedMonth }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedDay">Completed Day</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedDay }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedHour">Completed Hour</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedMin">Completed Min</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedTimeZoneOffset">Completed Time Zone Offset</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedTimeZoneOffset }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedTimeZoneName">Completed Time Zone Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedTimeZoneName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedNow">Completed Now</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedNow }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedDate">Completed Date</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.completedUid">Completed Uid</span></dt>
+          <dd>
+            <span>{{ tokenIssued.completedUid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdYear">Created Year</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdYear }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdMonth">Created Month</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdMonth }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdDay">Created Day</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdDay }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdHour">Created Hour</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdMin">Created Min</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdTimeZoneOffset">Created Time Zone Offset</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdTimeZoneOffset }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdTimeZoneName">Created Time Zone Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdTimeZoneName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdNow">Created Now</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdNow }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ tokenIssued.createdDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedYear">Modified Year</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedYear }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedMonth">Modified Month</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedMonth }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedDay">Modified Day</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedDay }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedHour">Modified Hour</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedMin">Modified Min</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedTimeZoneOffset">Modified Time Zone Offset</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedTimeZoneOffset }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedTimeZoneName">Modified Time Zone Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedTimeZoneName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedNow">Modified Now</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedNow }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ tokenIssued.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedYear">Transfered Year</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedYear }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedMonth">Transfered Month</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedMonth }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedDay">Transfered Day</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedDay }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedHour">Transfered Hour</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedHour }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedMin">Transfered Min</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedMin }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedDate">Transfered Date</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedTimeZoneOffset">Transfered Time Zone Offset</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedTimeZoneOffset }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedTimeZoneName">Transfered Time Zone Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedTimeZoneName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedNow">Transfered Now</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedNow }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.transferedUid">Transfered Uid</span></dt>
+          <dd>
+            <span>{{ tokenIssued.transferedUid }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.issuedFrom">Issued From</span></dt>
+          <dd>
+            <span>{{ tokenIssued.issuedFrom }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.departmentId">Department Id</span></dt>
+          <dd>
+            <span>{{ tokenIssued.departmentId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.departmentName">Department Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.departmentName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.bizName">Biz Name</span></dt>
+          <dd>
+            <span>{{ tokenIssued.bizName }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.rating">Rating</span></dt>
+          <dd>
+            <span>{{ tokenIssued.rating }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.feedback">Feedback</span></dt>
+          <dd>
+            <span>{{ tokenIssued.feedback }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.smsComingCount">Sms Coming Count</span></dt>
+          <dd>
+            <span>{{ tokenIssued.smsComingCount }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.pushComingCount">Push Coming Count</span></dt>
+          <dd>
+            <span>{{ tokenIssued.pushComingCount }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.orderId">Order Id</span></dt>
+          <dd>
+            <span>{{ tokenIssued.orderId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.reset">Reset</span></dt>
+          <dd>
+            <span>{{ tokenIssued.reset }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.resetDate">Reset Date</span></dt>
+          <dd>
+            <span>{{ tokenIssued.resetDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.tokenIssued.resetUid">Reset Uid</span></dt>
+          <dd>
+            <span>{{ tokenIssued.resetUid }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/token-issued', tokenIssued.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

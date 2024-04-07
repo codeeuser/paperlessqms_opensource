@@ -1,0 +1,81 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155340"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "profile_biz",
+  "fields": [
+    {
+      "fieldName": "bizName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bizLogoBase64",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "bizPhotoBase64",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "bizAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bizEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizPhoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizPhoneCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizPhoneIsoCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizWebsite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bizDesc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "enable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdByUid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "updatedByUid",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "ProfileBiz",
+  "pagination": "pagination",
+  "relationships": [],
+  "service": "serviceClass"
+}

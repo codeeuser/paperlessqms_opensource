@@ -1,0 +1,131 @@
+<div>
+  <h2 id="page-heading" data-cy="TokenNumberHeading">
+    <span qmsTranslate="paperlessqmsApp.tokenNumber.home.title">Token Numbers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.tokenNumber.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-token-number"
+        [routerLink]="['/token-number/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span qmsTranslate="paperlessqmsApp.tokenNumber.home.createLabel">Create a new Token Number</span>
+      </button>
+    </div>
+  </h2>
+
+  <qms-alert-error></qms-alert-error>
+
+  <qms-alert></qms-alert>
+
+  <qms-filter [filters]="filters"></qms-filter>
+
+  @if (tokenNumbers?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span qmsTranslate="paperlessqmsApp.tokenNumber.home.notFound">No Token Numbers found</span>
+    </div>
+  }
+
+  @if (tokenNumbers && tokenNumbers.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr qmsSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" qmsSortBy="id">
+              <div class="d-flex">
+                <span qmsTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="number">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenNumber.number">Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="departmentId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenNumber.departmentId">Department Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="serviceId">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenNumber.serviceId">Service Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" qmsSortBy="reset">
+              <div class="d-flex">
+                <span qmsTranslate="paperlessqmsApp.tokenNumber.reset">Reset</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (tokenNumber of tokenNumbers; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/token-number', tokenNumber.id, 'view']">{{ tokenNumber.id }}</a>
+              </td>
+              <td>{{ tokenNumber.number }}</td>
+              <td>{{ tokenNumber.departmentId }}</td>
+              <td>{{ tokenNumber.serviceId }}</td>
+              <td>{{ tokenNumber.reset }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/token-number', tokenNumber.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/token-number', tokenNumber.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(tokenNumber)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" qmsTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (tokenNumbers && tokenNumbers.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <qms-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></qms-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

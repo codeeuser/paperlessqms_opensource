@@ -1,0 +1,242 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="qms-queue-department-heading"
+        data-cy="QueueDepartmentCreateUpdateHeading"
+        qmsTranslate="paperlessqmsApp.queueDepartment.home.createOrEditLabel"
+      >
+        Create or edit a Queue Department
+      </h2>
+
+      <div>
+        <qms-alert-error></qms-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" qmsTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.profileBizId" for="field_profileBizId"
+            >Profile Biz Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="profileBizId"
+            id="field_profileBizId"
+            data-cy="profileBizId"
+            formControlName="profileBizId"
+          />
+          @if (editForm.get('profileBizId')!.invalid && (editForm.get('profileBizId')!.dirty || editForm.get('profileBizId')!.touched)) {
+            <div>
+              @if (editForm.get('profileBizId')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('profileBizId')?.errors?.number"
+                qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.bizName" for="field_bizName">Biz Name</label>
+          <input type="text" class="form-control" name="bizName" id="field_bizName" data-cy="bizName" formControlName="bizName" />
+          @if (editForm.get('bizName')!.invalid && (editForm.get('bizName')!.dirty || editForm.get('bizName')!.touched)) {
+            <div>
+              @if (editForm.get('bizName')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.bizCategoryName" for="field_bizCategoryName"
+            >Biz Category Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bizCategoryName"
+            id="field_bizCategoryName"
+            data-cy="bizCategoryName"
+            formControlName="bizCategoryName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          @if (editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)) {
+            <div>
+              @if (editForm.get('name')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.desc" for="field_desc">Desc</label>
+          <input type="text" class="form-control" name="desc" id="field_desc" data-cy="desc" formControlName="desc" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.lat" for="field_lat">Lat</label>
+          <input type="number" class="form-control" name="lat" id="field_lat" data-cy="lat" formControlName="lat" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.lng" for="field_lng">Lng</label>
+          <input type="number" class="form-control" name="lng" id="field_lng" data-cy="lng" formControlName="lng" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.timeZone" for="field_timeZone">Time Zone</label>
+          <input type="number" class="form-control" name="timeZone" id="field_timeZone" data-cy="timeZone" formControlName="timeZone" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.threshold" for="field_threshold">Threshold</label>
+          <input type="number" class="form-control" name="threshold" id="field_threshold" data-cy="threshold" formControlName="threshold" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.nearbyRange" for="field_nearbyRange">Nearby Range</label>
+          <input
+            type="number"
+            class="form-control"
+            name="nearbyRange"
+            id="field_nearbyRange"
+            data-cy="nearbyRange"
+            formControlName="nearbyRange"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.tokenTimeoutMin" for="field_tokenTimeoutMin"
+            >Token Timeout Min</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="tokenTimeoutMin"
+            id="field_tokenTimeoutMin"
+            data-cy="tokenTimeoutMin"
+            formControlName="tokenTimeoutMin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.selected" for="field_selected">Selected</label>
+          <input type="checkbox" class="form-check" name="selected" id="field_selected" data-cy="selected" formControlName="selected" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.enable" for="field_enable">Enable</label>
+          <input type="checkbox" class="form-check" name="enable" id="field_enable" data-cy="enable" formControlName="enable" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.orderNum" for="field_orderNum">Order Num</label>
+          <input type="number" class="form-control" name="orderNum" id="field_orderNum" data-cy="orderNum" formControlName="orderNum" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.currencySymbol" for="field_currencySymbol"
+            >Currency Symbol</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="currencySymbol"
+            id="field_currencySymbol"
+            data-cy="currencySymbol"
+            formControlName="currencySymbol"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.lenMetric" for="field_lenMetric">Len Metric</label>
+          <input type="text" class="form-control" name="lenMetric" id="field_lenMetric" data-cy="lenMetric" formControlName="lenMetric" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.currencyCode" for="field_currencyCode"
+            >Currency Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="currencyCode"
+            id="field_currencyCode"
+            data-cy="currencyCode"
+            formControlName="currencyCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.bannerName" for="field_bannerName">Banner Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bannerName"
+            id="field_bannerName"
+            data-cy="bannerName"
+            formControlName="bannerName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.createdDate" for="field_createdDate">Created Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdDate"
+            id="field_createdDate"
+            data-cy="createdDate"
+            formControlName="createdDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.queueDepartment.modifiedDate" for="field_modifiedDate"
+            >Modified Date</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedDate"
+            id="field_modifiedDate"
+            data-cy="modifiedDate"
+            formControlName="modifiedDate"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span qmsTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

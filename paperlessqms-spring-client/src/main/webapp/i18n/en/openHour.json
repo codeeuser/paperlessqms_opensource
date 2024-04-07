@@ -1,0 +1,32 @@
+{
+  "paperlessqmsApp": {
+    "openHour": {
+      "home": {
+        "title": "Open Hours",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Open Hour",
+        "createOrEditLabel": "Create or edit a Open Hour",
+        "notFound": "No Open Hours found"
+      },
+      "created": "A new Open Hour is created with identifier {{ param }}",
+      "updated": "A Open Hour is updated with identifier {{ param }}",
+      "deleted": "A Open Hour is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Open Hour {{ id }}?"
+      },
+      "detail": {
+        "title": "Open Hour"
+      },
+      "id": "ID",
+      "profileBizId": "Profile Biz Id",
+      "startHour": "Start Hour",
+      "startMin": "Start Min",
+      "endHour": "End Hour",
+      "endMin": "End Min",
+      "dayNum": "Day Num",
+      "enable": "Enable",
+      "modifiedDate": "Modified Date",
+      "createdDate": "Created Date"
+    }
+  }
+}

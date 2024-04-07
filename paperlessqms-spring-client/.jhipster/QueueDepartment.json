@@ -1,0 +1,119 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155440"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "queue_department",
+  "fields": [
+    {
+      "fieldName": "profileBizId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bizName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "bizCategoryName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "desc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lat",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "lng",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "timeZone",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "threshold",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nearbyRange",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "tokenTimeoutMin",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "selected",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "orderNum",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "currencySymbol",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lenMetric",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currencyCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bannerName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "QueueDepartment",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "agent",
+      "otherEntityRelationshipName": "queueDepartment",
+      "relationshipName": "agent",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "queueTerminal",
+      "otherEntityRelationshipName": "queueDepartment",
+      "relationshipName": "queueTerminal",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "queueService",
+      "otherEntityRelationshipName": "queueDepartment",
+      "relationshipName": "queueService",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

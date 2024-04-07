@@ -1,0 +1,27 @@
+{
+  "paperlessqmsApp": {
+    "tokenNumber": {
+      "home": {
+        "title": "Token Numbers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Token Number",
+        "createOrEditLabel": "Create or edit a Token Number",
+        "notFound": "No Token Numbers found"
+      },
+      "created": "A new Token Number is created with identifier {{ param }}",
+      "updated": "A Token Number is updated with identifier {{ param }}",
+      "deleted": "A Token Number is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Token Number {{ id }}?"
+      },
+      "detail": {
+        "title": "Token Number"
+      },
+      "id": "ID",
+      "number": "Number",
+      "departmentId": "Department Id",
+      "serviceId": "Service Id",
+      "reset": "Reset"
+    }
+  }
+}

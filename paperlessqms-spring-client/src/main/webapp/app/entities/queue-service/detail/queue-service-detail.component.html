@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (queueService) {
+      <div>
+        <h2 data-cy="queueServiceDetailsHeading"><span qmsTranslate="paperlessqmsApp.queueService.detail.title">Queue Service</span></h2>
+
+        <hr />
+
+        <qms-alert-error></qms-alert-error>
+
+        <qms-alert></qms-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ queueService.id }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.profileBizId">Profile Biz Id</span></dt>
+          <dd>
+            <span>{{ queueService.profileBizId }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.name">Name</span></dt>
+          <dd>
+            <span>{{ queueService.name }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.type">Type</span></dt>
+          <dd>
+            <span>{{ queueService.type }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.letter">Letter</span></dt>
+          <dd>
+            <span>{{ queueService.letter }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.start">Start</span></dt>
+          <dd>
+            <span>{{ queueService.start }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.desc">Desc</span></dt>
+          <dd>
+            <span>{{ queueService.desc }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.enable">Enable</span></dt>
+          <dd>
+            <span>{{ queueService.enable }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.orderNum">Order Num</span></dt>
+          <dd>
+            <span>{{ queueService.orderNum }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.enableCatalog">Enable Catalog</span></dt>
+          <dd>
+            <span>{{ queueService.enableCatalog }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.createdDate">Created Date</span></dt>
+          <dd>
+            <span>{{ queueService.createdDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.modifiedDate">Modified Date</span></dt>
+          <dd>
+            <span>{{ queueService.modifiedDate }}</span>
+          </dd>
+          <dt><span qmsTranslate="paperlessqmsApp.queueService.queueDepartment">Queue Department</span></dt>
+          <dd>
+            @if (queueService.queueDepartment) {
+              <div>
+                <a [routerLink]="['/queue-department', queueService.queueDepartment.id, 'view']">{{ queueService.queueDepartment.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/queue-service', queueService.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span qmsTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

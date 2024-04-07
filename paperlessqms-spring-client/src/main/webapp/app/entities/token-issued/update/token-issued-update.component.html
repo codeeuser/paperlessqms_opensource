@@ -1,0 +1,1016 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="qms-token-issued-heading"
+        data-cy="TokenIssuedCreateUpdateHeading"
+        qmsTranslate="paperlessqmsApp.tokenIssued.home.createOrEditLabel"
+      >
+        Create or edit a Token Issued
+      </h2>
+
+      <div>
+        <qms-alert-error></qms-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" qmsTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.uid" for="field_uid">Uid</label>
+          <input type="number" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          @if (editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)) {
+            <div>
+              @if (editForm.get('uid')?.errors?.required) {
+                <small class="form-text text-danger" qmsTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('uid')?.errors?.number" qmsTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.profileBizId" for="field_profileBizId">Profile Biz Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="profileBizId"
+            id="field_profileBizId"
+            data-cy="profileBizId"
+            formControlName="profileBizId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.phoneIsoCode" for="field_phoneIsoCode">Phone Iso Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneIsoCode"
+            id="field_phoneIsoCode"
+            data-cy="phoneIsoCode"
+            formControlName="phoneIsoCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.phoneCode" for="field_phoneCode">Phone Code</label>
+          <input type="text" class="form-control" name="phoneCode" id="field_phoneCode" data-cy="phoneCode" formControlName="phoneCode" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.userEmail" for="field_userEmail">User Email</label>
+          <input type="text" class="form-control" name="userEmail" id="field_userEmail" data-cy="userEmail" formControlName="userEmail" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.userFirstName" for="field_userFirstName"
+            >User First Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="userFirstName"
+            id="field_userFirstName"
+            data-cy="userFirstName"
+            formControlName="userFirstName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.userLastName" for="field_userLastName">User Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userLastName"
+            id="field_userLastName"
+            data-cy="userLastName"
+            formControlName="userLastName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.tokenLetter" for="field_tokenLetter">Token Letter</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tokenLetter"
+            id="field_tokenLetter"
+            data-cy="tokenLetter"
+            formControlName="tokenLetter"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.tokenNumber" for="field_tokenNumber">Token Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="tokenNumber"
+            id="field_tokenNumber"
+            data-cy="tokenNumber"
+            formControlName="tokenNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.serviceName" for="field_serviceName">Service Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="serviceName"
+            id="field_serviceName"
+            data-cy="serviceName"
+            formControlName="serviceName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.serviceId" for="field_serviceId">Service Id</label>
+          <input type="number" class="form-control" name="serviceId" id="field_serviceId" data-cy="serviceId" formControlName="serviceId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.terminalName" for="field_terminalName">Terminal Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="terminalName"
+            id="field_terminalName"
+            data-cy="terminalName"
+            formControlName="terminalName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.terminalId" for="field_terminalId">Terminal Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="terminalId"
+            id="field_terminalId"
+            data-cy="terminalId"
+            formControlName="terminalId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.orgTerminalName" for="field_orgTerminalName"
+            >Org Terminal Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="orgTerminalName"
+            id="field_orgTerminalName"
+            data-cy="orgTerminalName"
+            formControlName="orgTerminalName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.orgTerminalId" for="field_orgTerminalId"
+            >Org Terminal Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="orgTerminalId"
+            id="field_orgTerminalId"
+            data-cy="orgTerminalId"
+            formControlName="orgTerminalId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.statusName" for="field_statusName">Status Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="statusName"
+            id="field_statusName"
+            data-cy="statusName"
+            formControlName="statusName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.statusCode" for="field_statusCode">Status Code</label>
+          <input
+            type="number"
+            class="form-control"
+            name="statusCode"
+            id="field_statusCode"
+            data-cy="statusCode"
+            formControlName="statusCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isPending" for="field_isPending">Is Pending</label>
+          <input type="checkbox" class="form-check" name="isPending" id="field_isPending" data-cy="isPending" formControlName="isPending" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isQueue" for="field_isQueue">Is Queue</label>
+          <input type="checkbox" class="form-check" name="isQueue" id="field_isQueue" data-cy="isQueue" formControlName="isQueue" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isReject" for="field_isReject">Is Reject</label>
+          <input type="checkbox" class="form-check" name="isReject" id="field_isReject" data-cy="isReject" formControlName="isReject" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isAbsent" for="field_isAbsent">Is Absent</label>
+          <input type="checkbox" class="form-check" name="isAbsent" id="field_isAbsent" data-cy="isAbsent" formControlName="isAbsent" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isCancel" for="field_isCancel">Is Cancel</label>
+          <input type="checkbox" class="form-check" name="isCancel" id="field_isCancel" data-cy="isCancel" formControlName="isCancel" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isRecall" for="field_isRecall">Is Recall</label>
+          <input type="checkbox" class="form-check" name="isRecall" id="field_isRecall" data-cy="isRecall" formControlName="isRecall" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isCompleted" for="field_isCompleted">Is Completed</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isCompleted"
+            id="field_isCompleted"
+            data-cy="isCompleted"
+            formControlName="isCompleted"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.isTimeout" for="field_isTimeout">Is Timeout</label>
+          <input type="checkbox" class="form-check" name="isTimeout" id="field_isTimeout" data-cy="isTimeout" formControlName="isTimeout" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedDate" for="field_assignedDate">Assigned Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="assignedDate"
+            id="field_assignedDate"
+            data-cy="assignedDate"
+            formControlName="assignedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedYear" for="field_assignedYear">Assigned Year</label>
+          <input
+            type="number"
+            class="form-control"
+            name="assignedYear"
+            id="field_assignedYear"
+            data-cy="assignedYear"
+            formControlName="assignedYear"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedMonth" for="field_assignedMonth"
+            >Assigned Month</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="assignedMonth"
+            id="field_assignedMonth"
+            data-cy="assignedMonth"
+            formControlName="assignedMonth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedDay" for="field_assignedDay">Assigned Day</label>
+          <input
+            type="number"
+            class="form-control"
+            name="assignedDay"
+            id="field_assignedDay"
+            data-cy="assignedDay"
+            formControlName="assignedDay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedHour" for="field_assignedHour">Assigned Hour</label>
+          <input
+            type="number"
+            class="form-control"
+            name="assignedHour"
+            id="field_assignedHour"
+            data-cy="assignedHour"
+            formControlName="assignedHour"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedMin" for="field_assignedMin">Assigned Min</label>
+          <input
+            type="number"
+            class="form-control"
+            name="assignedMin"
+            id="field_assignedMin"
+            data-cy="assignedMin"
+            formControlName="assignedMin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedTimeZoneOffset" for="field_assignedTimeZoneOffset"
+            >Assigned Time Zone Offset</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="assignedTimeZoneOffset"
+            id="field_assignedTimeZoneOffset"
+            data-cy="assignedTimeZoneOffset"
+            formControlName="assignedTimeZoneOffset"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedTimeZoneName" for="field_assignedTimeZoneName"
+            >Assigned Time Zone Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="assignedTimeZoneName"
+            id="field_assignedTimeZoneName"
+            data-cy="assignedTimeZoneName"
+            formControlName="assignedTimeZoneName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedNow" for="field_assignedNow">Assigned Now</label>
+          <input
+            type="text"
+            class="form-control"
+            name="assignedNow"
+            id="field_assignedNow"
+            data-cy="assignedNow"
+            formControlName="assignedNow"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.assignedUid" for="field_assignedUid">Assigned Uid</label>
+          <input
+            type="number"
+            class="form-control"
+            name="assignedUid"
+            id="field_assignedUid"
+            data-cy="assignedUid"
+            formControlName="assignedUid"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedYear" for="field_completedYear"
+            >Completed Year</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="completedYear"
+            id="field_completedYear"
+            data-cy="completedYear"
+            formControlName="completedYear"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedMonth" for="field_completedMonth"
+            >Completed Month</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="completedMonth"
+            id="field_completedMonth"
+            data-cy="completedMonth"
+            formControlName="completedMonth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedDay" for="field_completedDay">Completed Day</label>
+          <input
+            type="number"
+            class="form-control"
+            name="completedDay"
+            id="field_completedDay"
+            data-cy="completedDay"
+            formControlName="completedDay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedHour" for="field_completedHour"
+            >Completed Hour</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="completedHour"
+            id="field_completedHour"
+            data-cy="completedHour"
+            formControlName="completedHour"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedMin" for="field_completedMin">Completed Min</label>
+          <input
+            type="number"
+            class="form-control"
+            name="completedMin"
+            id="field_completedMin"
+            data-cy="completedMin"
+            formControlName="completedMin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedTimeZoneOffset" for="field_completedTimeZoneOffset"
+            >Completed Time Zone Offset</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="completedTimeZoneOffset"
+            id="field_completedTimeZoneOffset"
+            data-cy="completedTimeZoneOffset"
+            formControlName="completedTimeZoneOffset"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedTimeZoneName" for="field_completedTimeZoneName"
+            >Completed Time Zone Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="completedTimeZoneName"
+            id="field_completedTimeZoneName"
+            data-cy="completedTimeZoneName"
+            formControlName="completedTimeZoneName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedNow" for="field_completedNow">Completed Now</label>
+          <input
+            type="text"
+            class="form-control"
+            name="completedNow"
+            id="field_completedNow"
+            data-cy="completedNow"
+            formControlName="completedNow"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedDate" for="field_completedDate"
+            >Completed Date</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="completedDate"
+            id="field_completedDate"
+            data-cy="completedDate"
+            formControlName="completedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.completedUid" for="field_completedUid">Completed Uid</label>
+          <input
+            type="number"
+            class="form-control"
+            name="completedUid"
+            id="field_completedUid"
+            data-cy="completedUid"
+            formControlName="completedUid"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdYear" for="field_createdYear">Created Year</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdYear"
+            id="field_createdYear"
+            data-cy="createdYear"
+            formControlName="createdYear"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdMonth" for="field_createdMonth">Created Month</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdMonth"
+            id="field_createdMonth"
+            data-cy="createdMonth"
+            formControlName="createdMonth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdDay" for="field_createdDay">Created Day</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdDay"
+            id="field_createdDay"
+            data-cy="createdDay"
+            formControlName="createdDay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdHour" for="field_createdHour">Created Hour</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdHour"
+            id="field_createdHour"
+            data-cy="createdHour"
+            formControlName="createdHour"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdMin" for="field_createdMin">Created Min</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdMin"
+            id="field_createdMin"
+            data-cy="createdMin"
+            formControlName="createdMin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdTimeZoneOffset" for="field_createdTimeZoneOffset"
+            >Created Time Zone Offset</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="createdTimeZoneOffset"
+            id="field_createdTimeZoneOffset"
+            data-cy="createdTimeZoneOffset"
+            formControlName="createdTimeZoneOffset"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdTimeZoneName" for="field_createdTimeZoneName"
+            >Created Time Zone Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="createdTimeZoneName"
+            id="field_createdTimeZoneName"
+            data-cy="createdTimeZoneName"
+            formControlName="createdTimeZoneName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdNow" for="field_createdNow">Created Now</label>
+          <input
+            type="text"
+            class="form-control"
+            name="createdNow"
+            id="field_createdNow"
+            data-cy="createdNow"
+            formControlName="createdNow"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.createdDate" for="field_createdDate">Created Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="createdDate"
+            id="field_createdDate"
+            data-cy="createdDate"
+            formControlName="createdDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedYear" for="field_modifiedYear">Modified Year</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedYear"
+            id="field_modifiedYear"
+            data-cy="modifiedYear"
+            formControlName="modifiedYear"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedMonth" for="field_modifiedMonth"
+            >Modified Month</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedMonth"
+            id="field_modifiedMonth"
+            data-cy="modifiedMonth"
+            formControlName="modifiedMonth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedDay" for="field_modifiedDay">Modified Day</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedDay"
+            id="field_modifiedDay"
+            data-cy="modifiedDay"
+            formControlName="modifiedDay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedHour" for="field_modifiedHour">Modified Hour</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedHour"
+            id="field_modifiedHour"
+            data-cy="modifiedHour"
+            formControlName="modifiedHour"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedMin" for="field_modifiedMin">Modified Min</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedMin"
+            id="field_modifiedMin"
+            data-cy="modifiedMin"
+            formControlName="modifiedMin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedTimeZoneOffset" for="field_modifiedTimeZoneOffset"
+            >Modified Time Zone Offset</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedTimeZoneOffset"
+            id="field_modifiedTimeZoneOffset"
+            data-cy="modifiedTimeZoneOffset"
+            formControlName="modifiedTimeZoneOffset"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedTimeZoneName" for="field_modifiedTimeZoneName"
+            >Modified Time Zone Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedTimeZoneName"
+            id="field_modifiedTimeZoneName"
+            data-cy="modifiedTimeZoneName"
+            formControlName="modifiedTimeZoneName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedNow" for="field_modifiedNow">Modified Now</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedNow"
+            id="field_modifiedNow"
+            data-cy="modifiedNow"
+            formControlName="modifiedNow"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.modifiedDate" for="field_modifiedDate">Modified Date</label>
+          <input
+            type="number"
+            class="form-control"
+            name="modifiedDate"
+            id="field_modifiedDate"
+            data-cy="modifiedDate"
+            formControlName="modifiedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedYear" for="field_transferedYear"
+            >Transfered Year</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedYear"
+            id="field_transferedYear"
+            data-cy="transferedYear"
+            formControlName="transferedYear"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedMonth" for="field_transferedMonth"
+            >Transfered Month</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedMonth"
+            id="field_transferedMonth"
+            data-cy="transferedMonth"
+            formControlName="transferedMonth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedDay" for="field_transferedDay"
+            >Transfered Day</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedDay"
+            id="field_transferedDay"
+            data-cy="transferedDay"
+            formControlName="transferedDay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedHour" for="field_transferedHour"
+            >Transfered Hour</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedHour"
+            id="field_transferedHour"
+            data-cy="transferedHour"
+            formControlName="transferedHour"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedMin" for="field_transferedMin"
+            >Transfered Min</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedMin"
+            id="field_transferedMin"
+            data-cy="transferedMin"
+            formControlName="transferedMin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedDate" for="field_transferedDate"
+            >Transfered Date</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedDate"
+            id="field_transferedDate"
+            data-cy="transferedDate"
+            formControlName="transferedDate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedTimeZoneOffset" for="field_transferedTimeZoneOffset"
+            >Transfered Time Zone Offset</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedTimeZoneOffset"
+            id="field_transferedTimeZoneOffset"
+            data-cy="transferedTimeZoneOffset"
+            formControlName="transferedTimeZoneOffset"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedTimeZoneName" for="field_transferedTimeZoneName"
+            >Transfered Time Zone Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="transferedTimeZoneName"
+            id="field_transferedTimeZoneName"
+            data-cy="transferedTimeZoneName"
+            formControlName="transferedTimeZoneName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedNow" for="field_transferedNow"
+            >Transfered Now</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="transferedNow"
+            id="field_transferedNow"
+            data-cy="transferedNow"
+            formControlName="transferedNow"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.transferedUid" for="field_transferedUid"
+            >Transfered Uid</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="transferedUid"
+            id="field_transferedUid"
+            data-cy="transferedUid"
+            formControlName="transferedUid"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.issuedFrom" for="field_issuedFrom">Issued From</label>
+          <input
+            type="text"
+            class="form-control"
+            name="issuedFrom"
+            id="field_issuedFrom"
+            data-cy="issuedFrom"
+            formControlName="issuedFrom"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.departmentId" for="field_departmentId">Department Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="departmentId"
+            id="field_departmentId"
+            data-cy="departmentId"
+            formControlName="departmentId"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.departmentName" for="field_departmentName"
+            >Department Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="departmentName"
+            id="field_departmentName"
+            data-cy="departmentName"
+            formControlName="departmentName"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.bizName" for="field_bizName">Biz Name</label>
+          <input type="text" class="form-control" name="bizName" id="field_bizName" data-cy="bizName" formControlName="bizName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.rating" for="field_rating">Rating</label>
+          <input type="number" class="form-control" name="rating" id="field_rating" data-cy="rating" formControlName="rating" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.feedback" for="field_feedback">Feedback</label>
+          <input type="text" class="form-control" name="feedback" id="field_feedback" data-cy="feedback" formControlName="feedback" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.smsComingCount" for="field_smsComingCount"
+            >Sms Coming Count</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="smsComingCount"
+            id="field_smsComingCount"
+            data-cy="smsComingCount"
+            formControlName="smsComingCount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.pushComingCount" for="field_pushComingCount"
+            >Push Coming Count</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="pushComingCount"
+            id="field_pushComingCount"
+            data-cy="pushComingCount"
+            formControlName="pushComingCount"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.orderId" for="field_orderId">Order Id</label>
+          <input type="text" class="form-control" name="orderId" id="field_orderId" data-cy="orderId" formControlName="orderId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.reset" for="field_reset">Reset</label>
+          <input type="checkbox" class="form-check" name="reset" id="field_reset" data-cy="reset" formControlName="reset" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.resetDate" for="field_resetDate">Reset Date</label>
+          <input type="number" class="form-control" name="resetDate" id="field_resetDate" data-cy="resetDate" formControlName="resetDate" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" qmsTranslate="paperlessqmsApp.tokenIssued.resetUid" for="field_resetUid">Reset Uid</label>
+          <input type="number" class="form-control" name="resetUid" id="field_resetUid" data-cy="resetUid" formControlName="resetUid" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span qmsTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span qmsTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

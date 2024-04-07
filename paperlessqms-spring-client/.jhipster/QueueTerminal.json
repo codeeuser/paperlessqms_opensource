@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240228155540"
+  },
+  "applications": ["paperlessqms"],
+  "entityTableName": "queue_terminal",
+  "fields": [
+    {
+      "fieldName": "profileBizId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "enable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "orderNum",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "modifiedDate",
+      "fieldType": "Long"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "QueueTerminal",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "queueDepartment",
+      "otherEntityRelationshipName": "queueTerminal",
+      "relationshipName": "queueDepartment",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "agent",
+      "otherEntityRelationshipName": "queueTerminal",
+      "relationshipName": "agent",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,51 @@
+<div>
+  <h2>
+    <span id="metrics-page-heading" qmsTranslate="metrics.title" data-cy="metricsPageHeading">Application Metrics</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()">
+      <fa-icon icon="sync"></fa-icon> <span qmsTranslate="metrics.refresh.button">Refresh</span>
+    </button>
+  </h2>
+
+  <h3 qmsTranslate="metrics.jvm.title">JVM Metrics</h3>
+
+  @if (metrics && !updatingMetrics) {
+    <div class="row">
+      <qms-jvm-memory class="col-md-4" [updating]="updatingMetrics" [jvmMemoryMetrics]="metrics.jvm"></qms-jvm-memory>
+
+      <qms-jvm-threads class="col-md-4" [threads]="threads"></qms-jvm-threads>
+
+      <qms-metrics-system class="col-md-4" [updating]="updatingMetrics" [systemMetrics]="metrics.processMetrics"></qms-metrics-system>
+    </div>
+  }
+
+  @if (metrics && metricsKeyExists('garbageCollector')) {
+    <qms-metrics-garbagecollector
+      [updating]="updatingMetrics"
+      [garbageCollectorMetrics]="metrics.garbageCollector"
+    ></qms-metrics-garbagecollector>
+  }
+
+  @if (updatingMetrics) {
+    <div class="well well-lg" qmsTranslate="metrics.updating">Updating...</div>
+  }
+
+  @if (metrics && metricsKeyExists('http.server.requests')) {
+    <qms-metrics-request [updating]="updatingMetrics" [requestMetrics]="metrics['http.server.requests']"></qms-metrics-request>
+  }
+
+  @if (metrics && metricsKeyExists('services')) {
+    <qms-metrics-endpoints-requests
+      [updating]="updatingMetrics"
+      [endpointsRequestsMetrics]="metrics.services"
+    ></qms-metrics-endpoints-requests>
+  }
+
+  @if (metrics && metricsKeyExists('cache')) {
+    <qms-metrics-cache [updating]="updatingMetrics" [cacheMetrics]="metrics.cache"></qms-metrics-cache>
+  }
+
+  @if (metrics && metricsKeyExistsAndObjectNotEmpty('databases')) {
+    <qms-metrics-datasource [updating]="updatingMetrics" [datasourceMetrics]="metrics.databases"></qms-metrics-datasource>
+  }
+</div>

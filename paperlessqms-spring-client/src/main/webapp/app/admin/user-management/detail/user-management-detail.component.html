@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (user) {
+      <div>
+        <h2>
+          <span qmsTranslate="userManagement.detail.title">User</span> [<strong>{{ user.login }}</strong
+          >]
+        </h2>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span qmsTranslate="userManagement.login">Login</span></dt>
+          <dd>
+            <span>{{ user.login }}</span>
+            @if (user.activated) {
+              <span class="badge bg-success" qmsTranslate="userManagement.activated">Activated</span>
+            } @else {
+              <span class="badge bg-danger" qmsTranslate="userManagement.deactivated">Deactivated</span>
+            }
+          </dd>
+
+          <dt><span qmsTranslate="userManagement.firstName">First name</span></dt>
+          <dd>{{ user.firstName }}</dd>
+
+          <dt><span qmsTranslate="userManagement.lastName">Last name</span></dt>
+          <dd>{{ user.lastName }}</dd>
+
+          <dt><span qmsTranslate="userManagement.email">Email</span></dt>
+          <dd>{{ user.email }}</dd>
+
+          <dt><span qmsTranslate="userManagement.langKey">Language</span></dt>
+          <dd>{{ user.langKey }}</dd>
+
+          <dt><span qmsTranslate="userManagement.createdBy">Created by</span></dt>
+          <dd>{{ user.createdBy }}</dd>
+
+          <dt><span qmsTranslate="userManagement.createdDate">Created date</span></dt>
+          <dd>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</dd>
+
+          <dt><span qmsTranslate="userManagement.lastModifiedBy">Modified by</span></dt>
+          <dd>{{ user.lastModifiedBy }}</dd>
+
+          <dt><span qmsTranslate="userManagement.lastModifiedDate">Modified date</span></dt>
+          <dd>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</dd>
+
+          <dt><span qmsTranslate="userManagement.profiles">Profiles</span></dt>
+          <dd>
+            <ul class="list-unstyled">
+              @for (authority of user.authorities; track $index) {
+                <li>
+                  <span class="badge bg-info">{{ authority }}</span>
+                </li>
+              }
+            </ul>
+          </dd>
+        </dl>
+
+        <button type="submit" routerLink="../../" class="btn btn-info">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span qmsTranslate="entity.action.back">Back</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
