@@ -1,8 +1,9 @@
 # PAPERLESSQMS PROJECT
-* Queue Management Solution for Web Based
+* Web Based Queue Management Solution built with Flutter and Spring Boot
 
 ## paperlessqms-spring
 * mvn wrapper:wrapper
+* mvn clean install
 * ./mvnw
 * Default http://localhost:8080
 
@@ -14,3 +15,7 @@
 
 ## flutter project
 * flutter run -d chrome --web-port=8081 --web-browser-flag "--disable-web-security"
+
+## Login/Password
+* admin@wheref.com/admin
+* user@wheref.com/user

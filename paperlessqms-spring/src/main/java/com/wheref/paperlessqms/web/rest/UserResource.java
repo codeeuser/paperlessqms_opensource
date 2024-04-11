@@ -92,13 +92,10 @@ public class UserResource {
 
     private final MailService mailService;
 
-    private final JdbcTemplate jdbcTemplate;
-
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService, JdbcTemplate jdbcTemplate) {
+    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
-        this.jdbcTemplate = jdbcTemplate;
     }
 
     /**
@@ -176,11 +173,6 @@ public class UserResource {
         if (!onlyContainsAllowedProperties(pageable)) {
             return ResponseEntity.badRequest().build();
         }
-        try {
-            dumpTables();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         final Page<AdminUserDTO> page = userService.getAllManagedUsers(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
@@ -216,18 +208,5 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName, "userManagement.deleted", login)).build();
-    }
-
-    public void dumpTables() throws Exception {
-        log.info("dumpTables: activeProfile: " + activeProfile);
-        if (activeProfile.indexOf("prod") >= 0) {
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH_mm_ss");
-
-            String dateTimeString = now.format(formatter);
-            String dump = "/home/wheref/dump_" + dateTimeString + ".zip";
-            // Execute the BACKUP/SCRIPT TO 'dump.sql' command
-            jdbcTemplate.execute("BACKUP TO '" + dump + "'");
-        }
     }
 }
