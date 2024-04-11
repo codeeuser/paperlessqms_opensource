@@ -85,8 +85,8 @@ export class TrackerService {
 
   private buildUrl(): string {
     // building absolute path so that websocket doesn't fail when deploying with a context path
-    let url = '/websocket/tracker';
-    url = this.location.prepareExternalUrl(url);
+    let url = 'htttp://localhost:8080/websocket/tracker';
+    // url = this.location.prepareExternalUrl(url);
     const authToken = this.authServerProvider.getToken();
     if (authToken) {
       return `${url}?access_token=${authToken}`;
