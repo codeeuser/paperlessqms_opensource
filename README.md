@@ -1,5 +1,3 @@
-![image info](https://wheref.com/assets/images/main/paperlessqms.png)
-
 # PAPERLESSQMS PROJECT
 * Web Based Queue Management Solution built with Flutter and Spring Boot
 * PaperlessQMS aim to reduce physical congestion, improve efficiency, and enhance customer satisfaction by providing a more convenient and flexible way for users to wait for service. They are particularly useful in settings such as retail stores, healthcare facilities, government offices, and theme parks where long queues are common.
