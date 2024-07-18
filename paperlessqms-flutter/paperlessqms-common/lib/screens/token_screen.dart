@@ -201,19 +201,12 @@ class _TokenScreenState extends State<TokenScreen> {
                       Text(_tokenIssued?.serviceName ?? '', style: styleSmall),
                       const SizedBox(height: 16),
                       if (address != null) ...[
-                        InkWell(
-                          child: QrImageView(
-                            data: address!,
-                            gapless: false,
-                            size: 200,
-                            backgroundColor: Colors.white,
-                            version: QrVersions.auto,
-                          ),
-                          onTap: () async {
-                            if (address != null) {
-                              await Utils.launchThisUrl(address!);
-                            }
-                          },
+                        QrImageView(
+                          data: address!,
+                          gapless: false,
+                          size: 200,
+                          backgroundColor: Colors.white,
+                          version: QrVersions.auto,
                         ),
                       ],
                       const SizedBox(height: 4),

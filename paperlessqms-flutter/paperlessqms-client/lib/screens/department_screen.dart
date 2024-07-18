@@ -236,7 +236,6 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
       // await controller?.dispose();
       Navigator.of(context).pop();
     } else {
-      await controller?.setFocusPoint(Offset.zero);
       Utils.overlayInfoMessage(key: uuid.v4(), msg: S.of(context).invalid); 
     }
   }

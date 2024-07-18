@@ -319,9 +319,6 @@ class DepartmentBloc extends Bloc<DepartmentEvent, DepartmentState> {
           departments: dataDep,
         )
       );
-    } else {
-      await controller?.setFocusPoint(Offset.zero); 
     }
-
   }
 }
