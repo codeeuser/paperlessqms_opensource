@@ -231,7 +231,7 @@ class BizBloc extends Bloc<BizEvent, BizState> {
     if (data is ServerErrorModel) {
       emit(BizErrorState(error: data));
     } else if (data is ProfileBizModel){
-      add(BizLoadAllEvent());
+      add(BizLoadOneEvent());
     }
   }
 
